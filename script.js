@@ -13,6 +13,8 @@ button.addEventListener("click", ()=>{
         span.innerHTML= "\u00d7";
         li.appendChild(span);
 
+        saveData();
+
     }
     inputBox.value="";
 })
@@ -22,4 +24,13 @@ listContainer.addEventListener("click", (e)=>{
         e.target.classList.toggle("checked");
     else if(e.target.tagName==="SPAN")
         e.target.parentElement.remove();
+    saveData();
 });
+
+let saveData= ()=>{
+    localStorage.setItem("data", listContainer.innerHTML);
+}
+let showTasks= ()=>{
+    listContainer.innerHTML= localStorage.getItem("data");
+}
+showTasks();
